@@ -1,0 +1,24 @@
+{
+  "name": "cse341",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon --quiet server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "CSE341"
+  },
+  "author": "Truman Benjamin",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
