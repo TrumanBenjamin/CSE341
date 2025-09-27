@@ -4,8 +4,14 @@ GET http://localhost:3000/contacts
 ### LOCAL: get one
 GET http://localhost:3000/contacts/one?id=68d85ad3d20b8955c6d28513
 
-### RENDER: get all
-GET https://YOUR-RENDER-URL/contacts
+### LOCAL: get one by path param
+GET http://localhost:3000/contacts/68d85ad3d20b8955c6d28513
 
-### RENDER: get one (replace with a real _id)
-GET https://YOUR-RENDER-URL/contacts/one?id=68d85ad3d20b8955c6d28513
+### RENDER: get all
+GET https://cse341-2q99.onrender.com/contacts
+
+### RENDER: get one
+GET https://cse341-2q99.onrender.com/contacts/one?id=68d85ad3d20b8955c6d28513
+
+### RENDER: get one by path param
+GET https://cse341-2q99.onrender.com/contacts/68d85ad3d20b8955c6d28513
