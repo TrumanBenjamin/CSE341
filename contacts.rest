@@ -1,0 +1,11 @@
+### LOCAL: get all
+GET http://localhost:3000/contacts
+
+### LOCAL: get one
+GET http://localhost:3000/contacts/one?id=68d85ad3d20b8955c6d28513
+
+### RENDER: get all
+GET https://YOUR-RENDER-URL/contacts
+
+### RENDER: get one (replace with a real _id)
+GET https://YOUR-RENDER-URL/contacts/one?id=68d85ad3d20b8955c6d28513
