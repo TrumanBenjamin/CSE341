@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 3000;
 const { initDb } = require('./utils/db');
 const bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
+
 const routes = require('./routes/index');
 app.use('/', routes);
 

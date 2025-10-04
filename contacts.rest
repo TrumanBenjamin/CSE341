@@ -4,7 +4,7 @@ GET http://localhost:3000/contacts
 ### LOCAL: get one
 GET http://localhost:3000/contacts/one?id=68d85ad3d20b8955c6d28513
 
-### LOCAL: get one by path param
+### LOCAL: get one by path
 GET http://localhost:3000/contacts/68d85ad3d20b8955c6d28513
 
 ### RENDER: get all
@@ -13,5 +13,71 @@ GET https://cse341-2q99.onrender.com/contacts
 ### RENDER: get one
 GET https://cse341-2q99.onrender.com/contacts/one?id=68d85ad3d20b8955c6d28513
 
-### RENDER: get one by path param
+### RENDER: get one by path
 GET https://cse341-2q99.onrender.com/contacts/68d85ad3d20b8955c6d28513
+
+# Above are old routes from last week's assignment 
+
+
+### LOCAL: GET all contacts 
+GET http://localhost:3000/contacts
+
+### LOCAL: Create a new contact
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Truman",
+  "lastName": "Benjamin",
+  "email": "truman@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1998-05-22"
+}
+
+### LOCAL: Update contact by id (204)
+# Replace <ID> with the _id returned from the POST above
+PUT http://localhost:3000/contacts/68e185a88cfab2a1615caa94
+Content-Type: application/json
+
+{
+  "firstName": "Truman",
+  "lastName": "Benjamin",
+  "email": "truman+updated@example.com",
+  "favoriteColor": "Orange",
+  "birthday": "1998-05-22"
+}
+
+### LOCAL: Delete contact by id (200)
+DELETE http://localhost:3000/contacts/68e185a88cfab2a1615caa94
+
+
+### RENDER: Get all contacts
+GET https://cse341-2q99.onrender.com/contacts
+
+### RENDER: Create a new contact
+POST https://cse341-2q99.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Ada",
+  "lastName": "Lovelace",
+  "email": "ada@analytic.engine",
+  "favoriteColor": "Green",
+  "birthday": "1815-12-10"
+}
+
+### RENDER: Update contact by id (204)
+# Replace <ID> with the inserted id from the POST above
+PUT https://cse341-2q99.onrender.com/contacts/<ID>
+Content-Type: application/json
+
+{
+  "firstName": "Ada",
+  "lastName": "Lovelace",
+  "email": "ada@updated.engine",
+  "favoriteColor": "Teal",
+  "birthday": "1815-12-10"
+}
+
+### RENDER: Delete contact by id (200)
+DELETE https://cse341-2q99.onrender.com/contacts/<ID>

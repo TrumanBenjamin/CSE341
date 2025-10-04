@@ -1,46 +1,21 @@
 
 const express = require('express');
 const router = express.Router();
-const { getDb } = require('../utils/db');
-const { ObjectId } = require('mongodb');
+const {listContacts, getContact, createContact, updateContact, deleteContact} = require('../controllers/contactsController');
 
-router.get('/', async (req, res) => {
-  try {
-    const db = getDb();
-    const docs = await db.collection('contacts').find({}).toArray();
-    res.status(200).json(docs);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// GET all
+router.get('/', listContacts);
 
-router.get('/one', async (req, res) => {
-  const { id } = req.query;
-  if (!id) return res.status(400).json({ error: 'Missing id query parameter' });
-  if (!ObjectId.isValid(id)) return res.status(400).json({ error: 'Invalid id format' });
+// GET one by id
+router.get('/:id', getContact);
 
-  try {
-    const db = getDb();
-    const doc = await db.collection('contacts').findOne({ _id: new ObjectId(id) });
-    if (!doc) return res.status(404).json({ error: 'Contact not found' });
-    res.status(200).json(doc);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// POST new contact 
+router.post('/', createContact);
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  if (!ObjectId.isValid(id)) return res.status(400).json({ error: 'Invalid id format' });
+// PUT update by id 
+router.put('/:id', updateContact);
 
-  try {
-    const db = getDb();
-    const doc = await db.collection('contacts').findOne({ _id: new ObjectId(id) });
-    if (!doc) return res.status(404).json({ error: 'Contact not found' });
-    res.status(200).json(doc);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// DELETE by id 
+router.delete('/:id', deleteContact);
 
 module.exports = router;
