@@ -4,9 +4,9 @@ const { getDb } = require('../utils/db');
 
 const REQUIRED = ['firstName', 'lastName', 'email', 'favoriteColor', 'birthday'];
 
-function validateBody(body) {
-  for (const k of REQUIRED) {
-    if (!body[k]) return `Missing required field: ${k}`;
+function validateBody(body = {}) {
+  for (const key of REQUIRED) {
+    if (!body[key]) return `Missing required field: ${key}`;
   }
   return null;
 }
@@ -42,7 +42,6 @@ exports.createContact = async (req, res) => {
   try {
     const db = getDb();
     const result = await db.collection('contacts').insertOne(req.body);
-    // Mastery wants: return id of newly created + 201
     res.status(201).json({ id: result.insertedId });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -62,7 +61,6 @@ exports.updateContact = async (req, res) => {
       { $set: req.body }
     );
     if (result.matchedCount === 0) return res.status(404).json({ error: 'Contact not found' });
-    // Rubric: respond with 204 for successful completion of PUT
     res.sendStatus(204);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -77,7 +75,6 @@ exports.deleteContact = async (req, res) => {
     const db = getDb();
     const result = await db.collection('contacts').deleteOne({ _id: new ObjectId(id) });
     if (result.deletedCount === 0) return res.status(404).json({ error: 'Contact not found' });
-    // Rubric: DELETE returns response with status 200
     res.status(200).json({ ok: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
