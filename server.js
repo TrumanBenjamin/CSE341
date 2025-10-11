@@ -24,6 +24,7 @@ const swaggerOptions = {
     },
     servers: [
       { url: 'http://localhost:3000', description: 'Local' },
+      { url: 'http://cse341-2q99.onrender.com', description: 'Production' },
     ],
     components: {
       schemas: {
